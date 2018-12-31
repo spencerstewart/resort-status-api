@@ -36,8 +36,8 @@ Route::get('{resort}/chairs', function (App\Resort $resort) {
     $chair_summary = [
         'numberOpen' => $open_chairs->count(),
         'numberClosed' => $closed_chairs->count(),
-        'openChairs' => $open_chairs->pluck('name'),
-        'closedChairs' =>$closed_chairs->pluck('name')
+        'openChairs' => $open_chairs->pluck('number'),
+        'closedChairs' =>$closed_chairs->pluck('number')
     ];
     return $chair_summary;
 });
