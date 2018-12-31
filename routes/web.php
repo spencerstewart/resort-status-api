@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return "hello";
 });
 
 // Route::get('/snowsummit/chair/1', function() {
