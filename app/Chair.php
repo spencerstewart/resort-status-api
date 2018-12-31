@@ -6,16 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chair extends Model
 {
+    protected $fillable = ['name', 'number', 'status', 'resort_id'];
+
     public function resort()
     {
         return $this->belongsTo('App\Resort');
     }
 
+    public static function saveChairStatus($url = 'https://www.bigbearmountainresort.com/Feeds/Xml/Mtn/v2.ashx?Resort=SnowSummit', $resortId = 1)
+    {
+        $chairStatuses = self::getChairStatus($url, $resortId);
+        foreach($chairStatuses as $chairStatus) {
+            $chair = Chair::updateOrCreate(
+                ['resort_id' => $chairStatus['resort_id'], 'number' => $chairStatus['number']],
+                ['status' => $chairStatus['status'], 'name' => $chairStatus['name']]
+            );
+        }
+    }
+
     /**
      * Returns array of of chair statuses for a particular resort
-     * Takes input of the XML url and the re
+     * Takes input of the XML url and the resort ID
      */
-    public static function getSummitChairStatus($url = 'https://www.bigbearmountainresort.com/Feeds/Xml/Mtn/v2.ashx?Resort=SnowSummit', $resortId = 1)
+    public static function getChairStatus($url, $resortId)
     {
         $chairStatus = [];
         $resortStatus = new \SimpleXMLElement(file_get_contents($url));
@@ -28,7 +41,7 @@ class Chair extends Model
                 preg_match('/[0-9]+/', $lift['name'], $number); // Get the Chair number
                 $chairStatus[] = [
                     'name' => $lift['name'],
-                    'number' => $number,
+                    'number' => $number[0],
                     'status' => $lift['status'],
                     'areaName' => $lift['areaName'],
                     'resort_id' => 1
