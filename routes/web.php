@@ -28,3 +28,16 @@ Route::get('{resort}/chairs/{chair_number}', function (App\Resort $resort, $chai
     return $resort->chairs()->where('number', $chair_number)->first();
     // return $chair_number;
 });
+
+Route::get('{resort}/chairs', function (App\Resort $resort) {
+    $open_chairs = $resort->chairs()->where('status', 'Open')->get();
+    $closed_chairs = $resort->chairs()->where('status', '!=', 'Open')->get();
+    $chairs[] = ['open' => 2, 'closed' => 9];
+    $chair_summary = [
+        'numberOpen' => $open_chairs->count(),
+        'numberClosed' => $closed_chairs->count(),
+        'openChairs' => $open_chairs->pluck('name'),
+        'closedChairs' =>$closed_chairs->pluck('name')
+    ];
+    return $chair_summary;
+});
