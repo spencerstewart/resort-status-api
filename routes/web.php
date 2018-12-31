@@ -24,7 +24,7 @@ Route::get('{resort}', function ($resort) {
     return \App\Resort::where('slug', $resort)->with('chairs')->first();
 });
 
-Route::get('{resort}/chair/{chair_number}', function (App\Resort $resort, $chair_number) {
+Route::get('{resort}/chairs/{chair_number}', function (App\Resort $resort, $chair_number) {
     return $resort->chairs()->where('number', $chair_number)->first();
     // return $chair_number;
 });
