@@ -42,6 +42,22 @@ Route::get('{resort}/chairs', function (App\Resort $resort) {
     return $chair_summary;
 });
 
+Route::get('{resort}/trails', function(App\Resort $resort) {
+    $trails = $resort->trails;
+    $open_trails = $trails->where('status', 'Open');
+    
+    $trail_summary = [
+        'openTrails' => $open_trails,
+        'difficulty' => [
+            'easiestTrails' => $open_trails->where('difficulty', 'Easiest'),
+            'moderateTrails' => $open_trails->where('difficulty', 'Slightly More Difficult'),
+            'difficultTrails' => $open_trails->where('difficulty', 'Difficult'),
+            'expertTrails' => $open_trails->where('difficulty', 'Most Difficult')
+        ]
+    ];
+    return $trail_summary;
+});
+
 Route::get('{resort}/trails/{trail}', function(App\Resort $resort, $trail) {
     return $resort->trails()->where('id', $trail)->first();
 });
