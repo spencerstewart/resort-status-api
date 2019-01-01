@@ -41,3 +41,7 @@ Route::get('{resort}/chairs', function (App\Resort $resort) {
     ];
     return $chair_summary;
 });
+
+Route::get('{resort}/trails/{trail}', function(App\Resort $resort, $trail) {
+    return $resort->trails()->where('id', $trail)->first();
+});
