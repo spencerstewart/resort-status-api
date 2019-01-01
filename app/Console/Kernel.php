@@ -28,6 +28,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('update:chairstatus')
                  ->everyMinute();
+        $schedule->command('update:trailstatus')
+                 ->everyMinute();
     }
 
     /**
