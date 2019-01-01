@@ -14,4 +14,8 @@ class Resort extends Model
     {
         return $this->hasMany('App\Chair');
     }
+    public function trails()
+    {
+        return $this->hasMany('App\Trail');
+    }
 }
