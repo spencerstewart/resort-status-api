@@ -43,19 +43,31 @@ Route::get('{resort}/chairs/{chair_number}', function (App\Resort $resort, $chai
 
 
 Route::get('{resort}/trails', function(App\Resort $resort) {
-    $trails = $resort->trails;
-    $open_trails = $trails->where('status', 'Open');
-    
-    $trail_summary = [
-        'openTrails' => $open_trails,
-        'difficulty' => [
-            'easiestTrails' => $open_trails->where('difficulty', 'Easiest'),
-            'moderateTrails' => $open_trails->where('difficulty', 'Slightly More Difficult'),
-            'difficultTrails' => $open_trails->where('difficulty', 'Difficult'),
-            'expertTrails' => $open_trails->where('difficulty', 'Most Difficult')
-        ]
-    ];
-    return $trail_summary;
+    return $resort->trails;
+});
+
+Route::get('{resort}/trails/open', function(App\Resort $resort) {
+    return $resort->trails()->where('status', 'Open')->get();
+});
+
+Route::get('{resort}/trails/{difficulty}', function(App\Resort $resort, $difficulty) {
+    switch ($difficulty) {
+        case 'easiest':
+            $difficulty = 'Easiest';
+            break;
+        case 'moderate':
+            $difficulty = 'Slightly More Difficult';
+            break;
+        case 'difficult':
+            $difficulty = 'Difficult';
+            break;
+        case 'expert':
+            $difficulty = 'Most Difficult';
+            break;
+        default:
+            break;
+    }
+    return $resort->trails()->where('status', 'Open')->where('difficulty', $difficulty)->get();
 });
 
 Route::get('{resort}/trails/{trail}', function(App\Resort $resort, $trail) {
