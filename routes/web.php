@@ -50,7 +50,11 @@ Route::get('{resort}/trails/open', function(App\Resort $resort) {
     return $resort->trails()->where('status', 'Open')->get();
 });
 
-Route::get('{resort}/trails/{difficulty}', function(App\Resort $resort, $difficulty) {
+Route::get('{resort}/trails/{trail}', function(App\Resort $resort, $trail) {
+    return $resort->trails()->where('slug', $trail)->first();
+});
+
+Route::get('{resort}/trails/difficulty/{difficulty}', function(App\Resort $resort, $difficulty) {
     switch ($difficulty) {
         case 'easiest':
             $difficulty = 'Easiest';
@@ -68,8 +72,4 @@ Route::get('{resort}/trails/{difficulty}', function(App\Resort $resort, $difficu
             break;
     }
     return $resort->trails()->where('status', 'Open')->where('difficulty', $difficulty)->get();
-});
-
-Route::get('{resort}/trails/{trail}', function(App\Resort $resort, $trail) {
-    return $resort->trails()->where('id', $trail)->first();
 });

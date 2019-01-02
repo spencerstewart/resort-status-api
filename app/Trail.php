@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trail extends Model
 {
-    protected $fillable = ['name', 'status', 'groomed', 'difficulty', 'resort_id'];
+    protected $fillable = ['name', 'slug', 'status', 'groomed', 'difficulty', 'resort_id'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    
     public function resort()
     {
         return $this->belongsTo('App\Resort');
@@ -19,7 +24,7 @@ class Trail extends Model
         foreach($trailStatuses as $trailStatus) {
             $trail = Trail::updateOrCreate(
                 ['resort_id' => $trailStatus['resort_id'], 'name' => $trailStatus['name']],
-                ['status' => $trailStatus['status'], 'groomed' => $trailStatus['groomed'], 'difficulty' => $trailStatus['difficulty']]
+                ['status' => $trailStatus['status'], 'slug' => $trailStatus['slug'], 'groomed' => $trailStatus['groomed'], 'difficulty' => $trailStatus['difficulty']]
             );
         }
     }
@@ -36,6 +41,7 @@ class Trail extends Model
         foreach ($trails as $trail) {
             $trailStatus[] = [
                 'name' => $trail['name'],
+                'slug' => urlencode($trail['name']),
                 'status' => $trail['status'],
                 'groomed' => $trail['groomed'],
                 'difficulty' => $trail['difficulty'],
