@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Chair;
+use App\Resort;
 
 class updateChairStatus extends Command
 {
@@ -38,6 +39,10 @@ class updateChairStatus extends Command
      */
     public function handle()
     {
-        Chair::saveChairStatus(); // uses default parameters for Snow Summit
+        $resorts = Resort::all();
+        foreach ($resorts as $resort) {
+            echo $resort->api_endpoint;
+            Chair::saveChairStatus($resort->api_endpoint, $resort->id);
+        }
     }
 }

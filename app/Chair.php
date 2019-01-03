@@ -15,11 +15,11 @@ class Chair extends Model
 
     public static function saveChairStatus($url = 'https://www.bigbearmountainresort.com/Feeds/Xml/Mtn/v2.ashx?Resort=SnowSummit', $resortId = 1)
     {
-        $chairStatuses = self::getChairStatus($url, $resortId);
-        foreach($chairStatuses as $chairStatus) {
-            $chair = Chair::updateOrCreate(
-                ['resort_id' => $chairStatus['resort_id'], 'number' => $chairStatus['number']],
-                ['status' => $chairStatus['status'], 'name' => $chairStatus['name']]
+        $chairs = self::getChairStatus($url, $resortId);
+        foreach($chairs as $chair) {
+            Chair::updateOrCreate(
+                ['resort_id' => $chair['resort_id'], 'number' => $chair['number']],
+                ['status' => $chair['status'], 'name' => $chair['name']]
             );
         }
     }
@@ -44,7 +44,7 @@ class Chair extends Model
                     'number' => $number[0],
                     'status' => $lift['status'],
                     'areaName' => $lift['areaName'],
-                    'resort_id' => 1
+                    'resort_id' => $resortId
                 ];
             }
         }
