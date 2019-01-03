@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Trail;
+use App\Resort;
+
 
 class updateTrailStatus extends Command
 {
@@ -38,6 +40,9 @@ class updateTrailStatus extends Command
      */
     public function handle()
     {
-        Trail::saveTrailStatus();
+        $resorts = Resort::all();
+        foreach ($resorts as $resort) {
+            Trail::saveTrailStatus($resort->api_endpoint, $resort->id);
+        }
     }
 }

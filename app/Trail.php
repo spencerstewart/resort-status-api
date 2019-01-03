@@ -20,11 +20,11 @@ class Trail extends Model
 
     public static function saveTrailStatus($url = 'https://www.bigbearmountainresort.com/Feeds/Xml/Mtn/v2.ashx?Resort=SnowSummit', $resortId = 1)
     {
-        $trailStatuses = self::getTrailStatus($url, $resortId);
-        foreach($trailStatuses as $trailStatus) {
-            $trail = Trail::updateOrCreate(
-                ['resort_id' => $trailStatus['resort_id'], 'name' => $trailStatus['name']],
-                ['status' => $trailStatus['status'], 'slug' => $trailStatus['slug'], 'groomed' => $trailStatus['groomed'], 'difficulty' => $trailStatus['difficulty']]
+        $trails = self::getTrailStatus($url, $resortId);
+        foreach($trails as $trail) {
+            Trail::updateOrCreate(
+                ['resort_id' => $trail['resort_id'], 'name' => $trail['name']],
+                ['status' => $trail['status'], 'slug' => $trail['slug'], 'groomed' => $trail['groomed'], 'difficulty' => $trail['difficulty']]
             );
         }
     }
@@ -45,7 +45,7 @@ class Trail extends Model
                 'status' => $trail['status'],
                 'groomed' => $trail['groomed'],
                 'difficulty' => $trail['difficulty'],
-                'resort_id' => 1
+                'resort_id' => $resortId
             ];
         }
         return $trailStatus;
