@@ -35,7 +35,12 @@ class Chair extends Model
         $lifts = $resortStatus->facilities->facility[1]->lifts->lift;
         foreach ($lifts as $lift) {
             // Filter out Magic Carpets and only get Chair status
-            if (!preg_match('/Chair/', $lift['name'])) {
+            echo $lift['name'] . "\n";
+            if (preg_match('/Moving Carpet/', $lift['name'])) {
+                continue;
+            
+            // Filter out Gondolas
+            } else if (preg_match('/Panorama | Gondola/', $lift['name'])) {
                 continue;
             } else {
                 preg_match('/[0-9]+/', $lift['name'], $number); // Get the Chair number
