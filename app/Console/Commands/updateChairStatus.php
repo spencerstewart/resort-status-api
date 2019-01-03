@@ -41,7 +41,6 @@ class updateChairStatus extends Command
     {
         $resorts = Resort::all();
         foreach ($resorts as $resort) {
-            echo $resort->api_endpoint;
             Chair::saveChairStatus($resort->api_endpoint, $resort->id);
         }
     }
