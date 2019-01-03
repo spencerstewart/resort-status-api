@@ -43,9 +43,12 @@ class Chair extends Model
                 continue;
             } else {
                 preg_match('/[0-9]+/', $lift['name'], $number); // Get the Chair number
+                $number = $number[0];
+                preg_match('/[a-zA-Z ]+/', $lift['name'], $name); // Get the Chair name
+                $name = substr($name[0], 0, -1); // removes space from end of chair name
                 $chairStatus[] = [
-                    'name' => $lift['name'],
-                    'number' => $number[0],
+                    'name' => $name,
+                    'number' => $number,
                     'status' => $lift['status'],
                     'areaName' => $lift['areaName'],
                     'resort_id' => $resortId
