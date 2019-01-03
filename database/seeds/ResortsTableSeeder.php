@@ -25,7 +25,7 @@ class ResortsTableSeeder extends Seeder
 
         $mammoth = new App\Resort;
         $mammoth->name = "Mammoth Mountain";
-        $mammoth->slug = "mammoth";
+        $mammoth->slug = "mammothmountain";
         $mammoth->api_endpoint = 'https://www.bigbearmountainresort.com/Feeds/Xml/Mtn/v2.ashx?Resort=MammothMountain';
         $mammoth->save(); 
     }
