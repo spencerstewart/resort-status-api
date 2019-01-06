@@ -18,4 +18,9 @@ class Resort extends Model
     {
         return $this->hasMany('App\Trail');
     }
+
+    public function lessons()
+    {
+        return $this->hasMany('App\Lesson');
+    }
 }

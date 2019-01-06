@@ -73,3 +73,9 @@ Route::get('{resort}/trails/difficulty/{difficulty}', function(App\Resort $resor
     }
     return $resort->trails()->where('status', 'Open')->where('difficulty', $difficulty)->get();
 });
+
+Route::get('{resort}/api/lessons', function(App\Resort $resort) {
+    return $resort->lessons;
+});
+
+Route::get('{resort}/lessons', 'LessonController@index');
