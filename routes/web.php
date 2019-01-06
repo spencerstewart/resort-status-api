@@ -16,6 +16,10 @@ Route::get('/', function () {
     return "hello";
 });
 
+Route::post('webhook', 'WebhookController@handle');
+Route::get('webhook', 'WebhookController@index');
+
+
 // Route::get('/snowsummit/chair/1', function() {
 //     return \App\Chair::first();
 // });
@@ -79,3 +83,4 @@ Route::get('{resort}/api/lessons', function(App\Resort $resort) {
 });
 
 Route::get('{resort}/lessons', 'LessonController@index');
+
