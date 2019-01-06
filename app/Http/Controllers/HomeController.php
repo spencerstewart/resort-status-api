@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Message;
+use Carbon\Carbon;
+
 class HomeController extends Controller
 {
     /**
@@ -13,7 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('public/home');
+        $todays_messages = Message::whereDate('created_at', Carbon::today())->take(10)->get();
+        return view('public/home', ['todays_messages' => $todays_messages]);
     }
 
     /**
