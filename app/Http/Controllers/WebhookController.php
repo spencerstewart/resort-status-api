@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\json_decode;
 
+use App\Message;
+
 
 class WebhookController extends Controller
 {
@@ -29,6 +31,7 @@ class WebhookController extends Controller
             // Hashes match
         }
 
+        // Message::saveNewMessage($request);
 
         return [
             'type' => 'message',
