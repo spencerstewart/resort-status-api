@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return "hello";
-});
+Route::get('/', 'HomeController@index');
 
 Route::post('webhook', 'WebhookController@handle');
 Route::get('webhook', 'WebhookController@index');
