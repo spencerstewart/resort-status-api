@@ -14,9 +14,8 @@
                     <div class="col-md">
                         <div class="card" style="">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $motd->from }}</h5>
+                                <h5 class="card-title">{{ $motd->from }} - <span class="rs-post-time">{{ \Carbon\Carbon::parse($motd->updated_at)->diffForHumans() }}</span></h5>
                                 <p class="card-text">{!! $motd->message !!}</p>
-                                <p class="card-text">{{ \Carbon\Carbon::parse($motd->updated_at)->diffForHumans() }}</p>
                             </div>
                         </div>
                     </div>
