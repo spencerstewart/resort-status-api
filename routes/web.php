@@ -13,7 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::post('webhook', 'WebhookController@handle');
+Route::post('message', 'WebhookController@handleMessage');
+Route::post('motd', 'WebhookController@handleMotd');
 Route::get('webhook', 'WebhookController@index');
 
 
