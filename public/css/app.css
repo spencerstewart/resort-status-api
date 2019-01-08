@@ -10497,9 +10497,17 @@ a.text-dark:focus {
 
 body {
   margin: 50px;
+  background-color: #e9e9e9;
 }
 
 .card {
   margin: 0.5em 0;
+  border: none;
+  border-radius: 0;
+}
+
+.card-header {
+  padding: 0.5rem 1.25rem;
+  background: #ffffff;
 }
 

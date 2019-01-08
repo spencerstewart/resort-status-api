@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Motd;
 use Illuminate\Http\Request;
 
-use App\Message;
-use App\Motd;
-use Carbon\Carbon;
-
-class HomeController extends Controller
+class MotdController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $todays_messages = Message::whereDate('created_at', Carbon::today())->take(10)->get();
-        $motds = Motd::whereDate('created_at', Carbon::today())->take(10)->get();
-        return view('public/home', ['todays_messages' => $todays_messages, 'Motds' => $motds]);
+        //
     }
 
     /**
@@ -46,10 +41,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Motd  $motd
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Motd $motd)
     {
         //
     }
@@ -57,10 +52,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Motd  $motd
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Motd $motd)
     {
         //
     }
@@ -69,10 +64,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Motd  $motd
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Motd $motd)
     {
         //
     }
@@ -80,10 +75,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Motd  $motd
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Motd $motd)
     {
         //
     }

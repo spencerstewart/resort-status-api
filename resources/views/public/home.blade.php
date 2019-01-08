@@ -8,15 +8,15 @@
     <div class="row">
         <div class="col-md">
             <h1>Welcome to the Resort Status Page</h1>
-            <h4>Message of the day</h4>
-            @foreach ($todays_messages as $message)
+            <h4>Message of the day - {{ \Carbon\Carbon::today()->toFormattedDateString() }}</h4>
+            @foreach ($Motds as $motd)
                 <div class="row">
                     <div class="col-md">
                         <div class="card" style="">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $message->from }}</h5>
-                                <p class="card-text">{{ $message->message }}</p>
-                                <p class="card-text">{{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}</p>
+                                <h5 class="card-title">{{ $motd->from }}</h5>
+                                <p class="card-text">{{ $motd->message }}</p>
+                                <p class="card-text">{{ \Carbon\Carbon::parse($motd->updated_at)->diffForHumans() }}</p>
                             </div>
                         </div>
                     </div>
@@ -35,10 +35,11 @@
         <div class="row">
             <div class="col-md">
                 <div class="card" style="">
+                    <div class="card-header">
+                        <span class="font-weight-bold">{{ $message->from }}</span> - {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ $message->from }}</h5>
                         <p class="card-text">{{ $message->message }}</p>
-                        <p class="card-text">{{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}</p>
                     </div>
                 </div>
             </div>
