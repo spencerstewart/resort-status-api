@@ -17,8 +17,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $todays_messages = Message::whereDate('created_at', Carbon::today())->take(10)->get();
-        $motds = Motd::whereDate('created_at', Carbon::today())->take(10)->get();
+        $todays_messages = Message::whereDate('updated_at', Carbon::today())->latest('updated_at')->take(10)->get();
+        $motds = Motd::whereDate('created_at', Carbon::today())->latest('updated_at')->take(10)->get();
         return view('public/home', ['todays_messages' => $todays_messages, 'Motds' => $motds]);
     }
 
