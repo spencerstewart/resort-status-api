@@ -48111,8 +48111,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\sstewart\Code\resort-status-api\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\sstewart\Code\resort-status-api\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/spencer/Code/ss/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/spencer/Code/ss/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
