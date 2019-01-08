@@ -26,4 +26,8 @@ class Message extends Model
         $message->teams_id = $request->channelData['team']['id'];
         return $message->save();
     }
+
+    public static function updateMessages() {
+        
+    }
 }
