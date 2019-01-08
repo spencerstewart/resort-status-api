@@ -28,3 +28,15 @@ body {
   padding: 0.5rem 1.25rem;
   background: #ffffff;
 }
+
+body b, body strong {
+  font-weight: 700;
+}
+
+body at, span[itemtype="http://schema.skype.com/Mention"] { 
+  color: #6264a7;
+}
+
+.popover, .tooltip, body {
+  font-family: "Segoe UI","Helvetica Neue","Apple Color Emoji","Segoe UI Emoji",Helvetica,Arial,sans-serif;
+}

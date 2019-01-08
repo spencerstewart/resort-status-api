@@ -15,7 +15,7 @@
                         <div class="card" style="">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $motd->from }}</h5>
-                                <p class="card-text">{{ $motd->message }}</p>
+                                <p class="card-text">{!! $motd->message !!}</p>
                                 <p class="card-text">{{ \Carbon\Carbon::parse($motd->updated_at)->diffForHumans() }}</p>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <span class="font-weight-bold">{{ $message->from }}</span> - {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}
                     </div>
                     <div class="card-body">
-                        <p class="card-text">{{ $message->message }}</p>
+                        <p class="card-text">{!! $message->message !!}</p>
                     </div>
                 </div>
             </div>
