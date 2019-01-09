@@ -23,6 +23,9 @@ Route::get('webhook', 'WebhookController@index');
  */
 
 Route::prefix('api')->group(function() {
+
+    Route::get('motds', 'MotdController@index');
+
     Route::get('{resort}', function ($resort) {
         return \App\Resort::where('slug', $resort)->with('chairs')->first();
     });

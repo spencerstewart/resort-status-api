@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Motd;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MotdController extends Controller
@@ -14,7 +15,7 @@ class MotdController extends Controller
      */
     public function index()
     {
-        //
+        return Motd::whereDate('created_at', Carbon::today())->latest('updated_at')->take(10)->get();
     }
 
     /**
