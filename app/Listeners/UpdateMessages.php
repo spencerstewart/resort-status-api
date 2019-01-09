@@ -27,5 +27,7 @@ class UpdateMessages
     public function handle(NewMessage $event)
     {
         echo $event->message;
+        // Update webpage
+        // And/or push notification about update
     }
 }
