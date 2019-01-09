@@ -22,13 +22,15 @@
         },
         data() {
             return {
-                motds: [
-                    {
-                        from: 'tom',
-                        message: 'hello'
-                    }
-                ]
+                motds: []
             }
+        },
+        created() {
+            axios.get('/api/motds')
+            .then(response => {
+                this.motds = response.data;
+                console.log(this.motds);
+            })
         }
     }
 </script>
