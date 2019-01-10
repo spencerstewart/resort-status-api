@@ -15,14 +15,22 @@
 </template>
 
 <script>
+    // import Echo from 'laravel-echo';
+    // import Pusher from 'pusher-js';
     export default {
         mounted() {
             console.log('Component mounted.');
+            window.Echo.channel("messages-channel")
+                .listen('NewMessage', event => {
+                    console.log(event);
+                    this.messages.unshift(event.message);
+                })
         },
         data() {
             return {
                 messages: [],
-                moment: moment
+                moment: moment,
+                echo: null
             }
         },
         created() {
