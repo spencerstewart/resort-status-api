@@ -11,7 +11,7 @@
             <h4>Message of the day - {{ \Carbon\Carbon::today()->toFormattedDateString() }}</h4>
             <div class="row">
                 <div class="col">
-                    <bbmr-motd></bbmr-motd>
+                    <bbmr-motds></bbmr-motds>
                 </div>
             </div>
         </div>
@@ -23,18 +23,6 @@
             <h2>Recent Messages:</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md">
-            @foreach ($todays_messages as $message)
-                <div class="card" style="">
-                    <div class="card-header">
-                        <span class="font-weight-bold">{{ $message->from }}</span> - {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">{!! $message->message !!}</p>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
+    <bbmr-messages></bbmr-messages>
+
 @endsection

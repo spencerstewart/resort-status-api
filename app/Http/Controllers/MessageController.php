@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Message;
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+
 class MessageController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        return Message::whereDate('updated_at', Carbon::today())->latest('updated_at')->take(10)->get();
     }
 
     /**
