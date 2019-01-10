@@ -7,7 +7,7 @@
             >
                 <div class="card-body">
                     <h5>{{motd.from}} - <span class="rs-post-time">{{ moment(motd.updated_at).fromNow()}}</span></h5>
-                    <p>{{motd.message}}</p>
+                    <p v-html="motd.message"></p>
                 </div>
 
             </div>
