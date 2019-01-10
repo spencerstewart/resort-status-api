@@ -1786,6 +1786,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log('Component mounted.');
+    console.log(window.Echo);
     window.Echo.channel("messages-channel").listen('NewMessage', function (event) {
       console.log(event);
 
