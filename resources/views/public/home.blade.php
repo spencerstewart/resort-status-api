@@ -10,22 +10,10 @@
             <h1>Welcome to the Resort Status Page</h1>
             <h4>Message of the day - {{ \Carbon\Carbon::today()->toFormattedDateString() }}</h4>
             <div class="row">
-                <div class="col-md">
-                    @foreach ($Motds as $motd)
-                        <div class="card" style="">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $motd->from }} - <span class="rs-post-time">{{ \Carbon\Carbon::parse($motd->updated_at)->diffForHumans() }}</span></h5>
-                                <p class="card-text">{!! $motd->message !!}</p>
-                            </div>
-                        </div>
-                    @endforeach
+                <div class="col">
+                    <bbmr-motd></bbmr-motd>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <bbmr-motd></bbmr-motd>
         </div>
     </div>
 @endsection

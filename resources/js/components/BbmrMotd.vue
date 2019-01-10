@@ -6,7 +6,7 @@
                 v-for="motd in motds"
             >
                 <div class="card-body">
-                    <h5>{{motd.from}}</h5>
+                    <h5>{{motd.from}} - <span class="rs-post-time">{{ moment(motd.updated_at).fromNow()}}</span></h5>
                     <p>{{motd.message}}</p>
                 </div>
 
@@ -22,7 +22,8 @@
         },
         data() {
             return {
-                motds: []
+                motds: [],
+                moment: moment
             }
         },
         created() {

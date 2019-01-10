@@ -6,6 +6,9 @@
  */
 
 require('./bootstrap');
+window.moment = require('moment');
+moment.locale();
+
 
 window.Vue = require('vue');
 
