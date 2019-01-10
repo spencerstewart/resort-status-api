@@ -48,13 +48,24 @@ import Echo from 'laravel-echo'
 
 window.Pusher = require('pusher-js');
 
+let pusherAppKey = "";
+
+if (process.env.MIX_APP_ENV === "local") {
+    pusherAppKey = "c6e11d82815097d78073";
+} else {
+    pusherAppKey = "14228f62678a471becbc";
+}
+
+
 window.Echo = new Echo({
     broadcaster: 'pusher',
     // key: 'c6e11d82815097d78073',
     // cluster: 'us2',
-    key: process.env.MIX_PUSHER_APP_KEY,
+    key: pusherAppKey,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: true
 });
 
-console.log("[Pusher Key] = " + process.env.MIX_PUSHER_APP_KEY);
+console.log("[Pusher Key from ENV] = " + process.env.MIX_PUSHER_APP_KEY);
+console.log("[Pusher Key from JS] = " + pusherAppKey);
+console.log("[APP ENV] = " + process.env.MIX_APP_ENV);
