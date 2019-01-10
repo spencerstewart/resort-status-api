@@ -6,6 +6,9 @@ use App\Events\NewMessage;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+use Illuminate\Support\Facades\Log;
+
+
 class UpdateMessages
 {
     /**
@@ -26,7 +29,9 @@ class UpdateMessages
      */
     public function handle(NewMessage $event)
     {
-        echo $event->message;
+        Log::error("THE EVENT WAS PROCESSED");
+        Log::error($event->message);
+
         // Update webpage
         // And/or push notification about update
     }

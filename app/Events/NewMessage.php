@@ -11,8 +11,6 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Mail\Message;
 
-use App\Message;
-
 class NewMessage
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
@@ -24,7 +22,7 @@ class NewMessage
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct(\App\Message $message)
     {
         $this->message = $message;
     }

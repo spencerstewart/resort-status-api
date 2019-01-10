@@ -5,13 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 
+use App\Message;
+use App\Events\NewMessage;
+
 
 class Message extends Model
 {
     public static function saveMessage($request) {
         $data = json_decode($request->getContent(), true);
         
-        Log::error($data);
+        // Log::error($data);
         // Log::error('from name: ' . $request->from['name']);
         // Log::error('message text: ' . $request->text);
         // Log::error('channel id: ' . $request->channelData['channel']['id']);
@@ -24,7 +27,9 @@ class Message extends Model
         $message->channel_id = $request->channelData['channel']['id'];
         $message->conversation_id = $request->conversation['id'];
         $message->teams_id = $request->channelData['team']['id'];
-        return $message->save();
+        $message->save();
+
+        event(new NewMessage($message));
     }
 
     public static function updateMessages() {
