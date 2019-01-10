@@ -34,6 +34,6 @@ class NewMessage
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('messages-channel');
     }
 }
