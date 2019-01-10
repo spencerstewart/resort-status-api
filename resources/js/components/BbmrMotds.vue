@@ -30,7 +30,6 @@
             axios.get('/api/motds')
             .then(response => {
                 this.motds = response.data;
-                console.log(this.motds);
             })
         }
     }
