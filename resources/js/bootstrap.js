@@ -66,6 +66,15 @@ window.Echo = new Echo({
     encrypted: true
 });
 
-console.log("[Pusher Key from ENV] = " + process.env.MIX_PUSHER_APP_KEY);
-console.log("[Pusher Key from JS] = " + pusherAppKey);
-console.log("[APP ENV] = " + process.env.MIX_APP_ENV);
+// Initialize Firebase
+import firebase from "firebase";
+
+var config = {
+    apiKey: "AIzaSyCPahI6oiAse6u-nCOMMZA8Ag2CGWqORfg",
+    authDomain: "resortstatus-bbmr.firebaseapp.com",
+    databaseURL: "https://resortstatus-bbmr.firebaseio.com",
+    projectId: "resortstatus-bbmr",
+    storageBucket: "resortstatus-bbmr.appspot.com",
+    messagingSenderId: "528646445374"
+};
+window.firebase = firebase.initializeApp(config);

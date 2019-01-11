@@ -20,10 +20,8 @@
     export default {
         mounted() {
             console.log('Component mounted.');
-            console.log(window.Echo);
             window.Echo.channel("messages-channel")
                 .listen('NewMessage', event => {
-                    console.log(event);
                     this.messages.unshift(event.message);
                 })
         },
