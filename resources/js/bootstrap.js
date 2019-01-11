@@ -52,8 +52,10 @@ let pusherAppKey = "";
 
 if (process.env.MIX_APP_ENV === "local") {
     pusherAppKey = "c6e11d82815097d78073";
-} else {
+} else if (process.env.MIX_APP_ENV === "staging"){
     pusherAppKey = "14228f62678a471becbc";
+} else {
+    pusherAppKey = "65439e4db68f54750b2a";
 }
 
 
