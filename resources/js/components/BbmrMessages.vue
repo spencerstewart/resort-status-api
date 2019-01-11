@@ -35,9 +35,9 @@
                     console.log("[edited message]", notificationBody);
 
                     Notification.requestPermission( permission => {
-                        let notification = new Notification('New Update!', {
+                        let notification = new Notification('BBMR Update', {
                             body: notificationBody, // content for the alert
-                            // icon: "https://pusher.com/static_logos/320x320.png" // optional image url
+                            icon: "https://files.bigbearmountainresort.com/resources/BBMR_Logo_Black_on_White_512x512.jpg" // optional image url
                         });
 
                         // link to page on clicking the notification
