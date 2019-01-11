@@ -23,6 +23,28 @@
             window.Echo.channel("messages-channel")
                 .listen('NewMessage', event => {
                     this.messages.unshift(event.message);
+                    if (! ('Notification' in window)) {
+                        alert('Web Notification is not supported');
+                        return;
+                    }
+
+                    let notificationBody = event.message.message.replace(/(:?<span.*<\/span>)/gm, '');
+                    notificationBody = notificationBody.replace(/<(?:.|\n)*?>/gm, '');
+                    notificationBody = notificationBody.replace(/\&nbsp;/gm, ' ');
+                    console.log("[unedited message]", event.message.message);
+                    console.log("[edited message]", notificationBody);
+
+                    Notification.requestPermission( permission => {
+                        let notification = new Notification('New Update!', {
+                            body: notificationBody, // content for the alert
+                            // icon: "https://pusher.com/static_logos/320x320.png" // optional image url
+                        });
+
+                        // link to page on clicking the notification
+                        notification.onclick = () => {
+                            window.open(window.location.href);
+                        };
+                    });
                 })
         },
         data() {
