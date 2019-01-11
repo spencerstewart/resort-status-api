@@ -65,16 +65,3 @@ window.Echo = new Echo({
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: true
 });
-
-// Initialize Firebase
-import firebase from "firebase";
-
-var config = {
-    apiKey: "AIzaSyCPahI6oiAse6u-nCOMMZA8Ag2CGWqORfg",
-    authDomain: "resortstatus-bbmr.firebaseapp.com",
-    databaseURL: "https://resortstatus-bbmr.firebaseio.com",
-    projectId: "resortstatus-bbmr",
-    storageBucket: "resortstatus-bbmr.appspot.com",
-    messagingSenderId: "528646445374"
-};
-window.firebase = firebase.initializeApp(config);
