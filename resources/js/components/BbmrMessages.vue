@@ -37,12 +37,14 @@
                     Notification.requestPermission( permission => {
                         let notification = new Notification('BBMR Update', {
                             body: notificationBody, // content for the alert
-                            icon: "https://files.bigbearmountainresort.com/resources/BBMR_logo_white_on_black_512x512.jpg" // optional image url
+                            icon: "https://files.bigbearmountainresort.com/resources/BBMR_logo_white_on_black_512x512.jpg", // optional image url
+                            requiresInteraction: true
                         });
 
                         // link to page on clicking the notification
                         notification.onclick = () => {
-                            window.open(window.location.href);
+                            this.close(); // Dismisses the notification
+                            // window.open(window.location.href); // Commented out
                         };
                     });
                 })
