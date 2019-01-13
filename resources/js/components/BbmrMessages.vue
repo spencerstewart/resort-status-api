@@ -43,8 +43,7 @@
 
                         // link to page on clicking the notification
                         notification.onclick = () => {
-                            this.close(); // Dismisses the notification
-                            // window.open(window.location.href); // Commented out
+                            this.close();
                         };
                     });
                 })
