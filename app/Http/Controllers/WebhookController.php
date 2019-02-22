@@ -42,6 +42,7 @@ class WebhookController extends Controller
 
     public function handleMotd(Request $request)
     {
+        Log::info("[MOTD] Motd received")
         $security_token = "KaLPviRJMnxqtDnVyStGFotWCPixu2OEjDnP+lZqp88=";
         // Log::error(utf8_encode($request->getContent()));
         // Log::error(json_encode($request->getContent()));
@@ -60,6 +61,7 @@ class WebhookController extends Controller
             // Hashes match
         }
 
+        Log::info("[MOTD] Saving Motd");
         Motd::saveMessage($request);
 
         return [
