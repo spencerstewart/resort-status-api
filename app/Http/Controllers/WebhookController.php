@@ -42,7 +42,7 @@ class WebhookController extends Controller
 
     public function handleMotd(Request $request)
     {
-        Log::info("[MOTD] Motd received")
+        Log::info("[MOTD] Motd received");
         $security_token = "KaLPviRJMnxqtDnVyStGFotWCPixu2OEjDnP+lZqp88=";
         // Log::error(utf8_encode($request->getContent()));
         // Log::error(json_encode($request->getContent()));
