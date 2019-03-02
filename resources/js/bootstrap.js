@@ -61,9 +61,9 @@ if (process.env.MIX_APP_ENV === "local") {
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    // key: 'c6e11d82815097d78073',
+    key: '65439e4db68f54750b2a',
     // cluster: 'us2',
-    key: pusherAppKey,
+    // key: pusherAppKey,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: true
 });
