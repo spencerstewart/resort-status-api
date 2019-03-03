@@ -10,7 +10,7 @@ class Motd extends Model
     public static function saveMessage($request) {
         $data = json_decode($request->getContent(), true);
         
-        Log::info("[MOTD] MOTD was from: " . $data->name);
+        // Log::info("[MOTD] Some information ";
         // Log::error('from name: ' . $request->from['name']);
         // Log::error('message text: ' . $request->text);
         // Log::error('channel id: ' . $request->channelData['channel']['id']);
