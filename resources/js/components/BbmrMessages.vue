@@ -19,7 +19,7 @@
     // import Pusher from 'pusher-js';
     export default {
         mounted() {
-            console.log('Component mounted.');
+            console.log('Message mounted.');
             window.Echo.channel("messages-channel")
                 .listen('NewMessage', event => {
                     this.messages.unshift(event.message);
