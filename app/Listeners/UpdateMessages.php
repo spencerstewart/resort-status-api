@@ -29,8 +29,8 @@ class UpdateMessages implements ShouldQueue
      */
     public function handle(NewMessage $event)
     {
-        Log::error("THE EVENT WAS PROCESSED");
-        Log::error($event->message);
+        Log::info("THE EVENT WAS PROCESSED");
+        Log::info($event->message);
 
         // Update webpage
         // And/or push notification about update
