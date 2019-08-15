@@ -24,7 +24,7 @@ Route::get('webhook', 'WebhookController@index');
 
 Route::prefix('api')->group(function() {
 
-    Route::get('motds', 'MotdController@index');
+    Route::get('motd', 'MotdController@index');
     Route::get('messages', 'MessageController@index');
 
     Route::get('{resort}', function ($resort) {
